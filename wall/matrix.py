@@ -42,6 +42,8 @@ class Matrix():
         self.length = length
         self.dead_pixels = dead_pixels
 
+        self.colors = [[0]*length]*rows
+
         self.matrix = self.generate_matrix()
         self.clear()
 
@@ -77,10 +79,13 @@ class Matrix():
         pixel_number = self.matrix[x][y]
         # Red and green are switched on the strip
         r, g, b  = color
+        self.colors[x][y] = (r, g, b)
         logging.debug("Set led %d to %s" % (pixel_number, Color(g,r,b)))
         self.strip.setPixelColor(pixel_number, Color(*color))
         self.strip.show()
 
+    def get_colors(self):
+        return self.colors
 
 
 if __name__ == "__main__":
