@@ -16,7 +16,7 @@ class Server(object):
 
     def init_matrix(self):
         if os.getenv("ENV")!="TEST":
-            self.matrix = Matrix.Matrix(
+            self.matrix = Matrix(
                 led_count=419,
                 rows=config.ROWS,
                 length=config.LENGTH,
