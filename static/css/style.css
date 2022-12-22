@@ -1,0 +1,14 @@
+ table td {
+    border: thin solid;
+    border-color: grey;
+    background-color: whitesmoke;
+    height: 36px;
+    width: 36px;
+    empty-cells: show;
+ }
+
+ td div {
+    height: 36px;
+    width: 36px;
+    overflow: hidden;
+ }

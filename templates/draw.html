@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  WALL/Vic, or I like to call it recently: WALL+Vic
+</h1>
+<h2 class="subtitle">
+  Draw.
+</h2>
+<div>
+  <table>
+  {% for row in range(0, size[1]) %}
+    <TR>
+    {% for column in range(0, size[0]) %}
+      <TD><div value="[{{row}}, {{column}}]" class="bottle"  id="{{row}}x{{column}}">{{ row }}, {{ column}}</div></TD>
+    {% endfor %}
+    </TR>
+  {% endfor %}
+  </table>
+  <input type="color" id="color" name="color" value="#e66465">
+</div>
+{% endblock %}
