@@ -12,6 +12,7 @@ class Server(object):
 
     def __init__(self):
         self.matrix = None
+        self.init_matrix()
 
     def init_matrix(self):
         if os.getenv("ENV")!="TEST":
