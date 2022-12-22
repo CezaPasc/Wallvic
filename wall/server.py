@@ -29,7 +29,7 @@ class Server(object):
     async def handle(self, websocket, path):
         print("Listening socket messages...")
         current_matrix = self.matrix.get_colors()
-        await websocket.send(json.dumps({"topic": "init", "msg": current_matrix}))
+        websocket.send(json.dumps({"topic": "init", "msg": current_matrix}))
 
         while True:
             data = await websocket.recv()
@@ -49,10 +49,10 @@ class Server(object):
             print(pos, color)
             if os.getenv("ENV")!="TEST":
                 self.matrix.set_pixel(x, y, color)
-            await websocket.send({"topic": "update_on", "msg": color})
+            websocket.send(json.dumps({"topic": "update_on", "msg": color}))
 
     def run(self):
-        start_server = websockets.serve(json.dumps(self.handle, '0.0.0.0', 5678))
+        start_server = websockets.serve(self.handle, '0.0.0.0', 5678)
 
         asyncio.get_event_loop().run_until_complete(start_server)
         asyncio.get_event_loop().run_forever()
