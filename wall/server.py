@@ -49,7 +49,7 @@ class Server(object):
             print(pos, color)
             if os.getenv("ENV")!="TEST":
                 self.matrix.set_pixel(x, y, color)
-            await websocket.send(json.dumps({"topic": "update_on", "msg": color}))
+            await websocket.send(json.dumps({"topic": "update_one", "msg": color}))
 
     def run(self):
         start_server = websockets.serve(self.handle, '0.0.0.0', 5678)
